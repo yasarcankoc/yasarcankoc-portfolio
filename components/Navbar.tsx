@@ -1,6 +1,7 @@
 "use client";
 
 import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
 
 const links = [
   { href: "#hakkimda", label: "Hakkımda" },
@@ -13,9 +14,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-paper/70 dark:bg-ink/70 border-b border-graphite/8 dark:border-paper/8">
       <nav className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="font-mono text-sm tracking-tight">
-          yck<span className="text-signal">.</span>dev
-        </a>
+        <Logo />
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (

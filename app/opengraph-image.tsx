@@ -13,6 +13,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const ink = "#12141A";
+const inkSoft = "#1b1e26";
 const paper = "#ECEDEF";
 const fog = "#9CA3AF";
 const mist = "#5B5F6B";
@@ -101,10 +102,24 @@ export default async function Image() {
             alignItems: "center",
           }}
         >
-          <div style={{ display: "flex", fontSize: 30, fontWeight: 500 }}>
-            <div style={{ color: paper }}>yck</div>
-            <div style={{ color: signal }}>.</div>
-            <div style={{ color: paper }}>dev</div>
+          {/* Navbar'daki Logo rozetiyle aynı mark; ink zeminde kaybolmasın
+              diye ink-soft dolgu + ince kenarlık */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 54,
+              height: 54,
+              borderRadius: 14,
+              backgroundColor: inkSoft,
+              border: "1px solid rgba(236, 237, 239, 0.18)",
+            }}
+          >
+            <div style={{ display: "flex", fontSize: 21, fontWeight: 700 }}>
+              <div style={{ color: paper }}>yck</div>
+              <div style={{ color: signal }}>.</div>
+            </div>
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div
