@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #12141a;
+  --color-ink-soft: #1b1e26;
+  --color-paper: #ecedef;
+  --color-paper-soft: #ffffff;
+  --color-graphite: #1b1d22;
+  --color-mist: #5b5f6b;
+  --color-fog: #9ca3af;
+  --color-signal: #4a5fff;
+  --color-wire: #34c795;
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+
+  --animate-blink: blink 1s step-end infinite;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+::selection {
+  background-color: #4a5fff;
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
