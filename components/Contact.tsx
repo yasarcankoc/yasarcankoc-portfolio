@@ -4,13 +4,44 @@ import { useState } from "react";
 import { Mail, ExternalLink } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+
+const inputClass =
+  "w-full bg-graphite/[0.03] dark:bg-paper/[0.04] border border-graphite/10 dark:border-paper/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-signal focus:bg-transparent transition-colors";
+
+const socials = [
+  {
+    href: "mailto:yasarcankoc61@gmail.com",
+    icon: Mail,
+    label: "yasarcankoc61@gmail.com",
+    external: false,
+  },
+  {
+    href: "https://linkedin.com/in/yasarcankoc",
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    external: true,
+  },
+  {
+    href: "https://github.com/yasarcankoc",
+    icon: FaGithub,
+    label: "GitHub",
+    external: true,
+  },
+  {
+    href: "https://bionluk.com/cannkoc",
+    icon: ExternalLink,
+    label: "Bionluk profilim",
+    external: true,
+  },
+];
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolyo mesajı — ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
@@ -20,28 +51,28 @@ export default function Contact() {
   return (
     <section
       id="iletisim"
-      className="max-w-4xl mx-auto px-6 py-20 border-t border-graphite/10 dark:border-paper/10"
+      className="max-w-4xl mx-auto px-6 py-24 border-t border-graphite/8 dark:border-paper/8"
     >
       <Reveal>
-        <p className="font-mono text-xs text-signal mb-3">04 — iletişim</p>
-        <h2 className="font-display font-medium text-2xl md:text-3xl mb-4">
-          Birlikte çalışalım
-        </h2>
-        <p className="text-mist dark:text-fog mb-10 max-w-lg">
-          Bir proje fikriniz mi var, yoksa ekibinize mi katılmamı istiyorsunuz?
-          Aşağıdan yazın, size dönüş yapayım.
-        </p>
+        <SectionHeading
+          eyebrow="İletişim"
+          title="Birlikte çalışalım"
+          lead="Bir proje fikriniz mi var, yoksa ekibinize mi katılmamı istiyorsunuz? Aşağıdan yazın, size dönüş yapayım."
+        />
       </Reveal>
 
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-[3fr_2fr] gap-6 items-start">
         <Reveal>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 rounded-2xl bg-paper-soft dark:bg-ink-soft ring-1 ring-graphite/10 dark:ring-paper/10 p-6 md:p-8"
+          >
             <input
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Adınız"
-              className="w-full bg-transparent border border-graphite/15 dark:border-paper/15 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-signal transition-colors"
+              className={inputClass}
             />
             <input
               required
@@ -49,7 +80,7 @@ export default function Contact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-posta adresiniz"
-              className="w-full bg-transparent border border-graphite/15 dark:border-paper/15 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-signal transition-colors"
+              className={inputClass}
             />
             <textarea
               required
@@ -57,11 +88,11 @@ export default function Contact() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Mesajınız"
               rows={4}
-              className="w-full bg-transparent border border-graphite/15 dark:border-paper/15 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-signal transition-colors resize-none"
+              className={`${inputClass} resize-none`}
             />
             <button
               type="submit"
-              className="bg-graphite text-paper dark:bg-paper dark:text-ink rounded-full px-6 py-3 text-sm font-medium hover:opacity-90 transition-opacity"
+              className="w-full bg-graphite text-paper dark:bg-paper dark:text-ink rounded-xl px-6 py-3.5 text-sm font-medium shadow-lg shadow-graphite/15 dark:shadow-black/40 hover:-translate-y-0.5 hover:opacity-95 transition-all"
             >
               Mesaj gönder
             </button>
@@ -69,37 +100,24 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="flex flex-col justify-center gap-4">
-            <a
-              href="mailto:yasarcankoc61@gmail.com"
-              className="flex items-center gap-3 text-sm hover:text-signal transition-colors"
-            >
-              <Mail size={16} /> yasarcankoc61@gmail.com
-            </a>
-            <a
-              href="https://linkedin.com/in/yasarcankoc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm hover:text-signal transition-colors"
-            >
-              <FaLinkedin size={16} /> LinkedIn
-            </a>
-            <a
-              href="https://github.com/yasarcankoc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm hover:text-signal transition-colors"
-            >
-              <FaGithub size={16} /> GitHub
-            </a>
-            <a
-              href="https://bionluk.com/cannkoc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm hover:text-signal transition-colors"
-            >
-              <ExternalLink size={16} /> Bionluk profilim
-            </a>
+          <div className="flex flex-col gap-3">
+            {socials.map(({ href, icon: Icon, label, external }) => (
+              <a
+                key={href}
+                href={href}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="group flex items-center gap-3 rounded-xl ring-1 ring-graphite/10 dark:ring-paper/10 bg-paper-soft dark:bg-ink-soft px-4 py-3.5 text-sm hover:ring-signal/40 hover:-translate-y-0.5 transition-all"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-signal/10 text-signal">
+                  <Icon size={15} />
+                </span>
+                <span className="group-hover:text-signal transition-colors">
+                  {label}
+                </span>
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>

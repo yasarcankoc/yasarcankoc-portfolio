@@ -39,10 +39,21 @@ export default async function Image() {
           fontFamily: "Space Grotesk",
         }}
       >
-        {/* Terminal eyebrow — Hero'daki "$ whoami" ile aynı dil */}
-        <div style={{ display: "flex", fontSize: 30, fontWeight: 500 }}>
-          <div style={{ color: signal }}>$</div>
-          <div style={{ color: fog, marginLeft: 14 }}>whoami</div>
+        {/* Hero'daki müsaitlik rozetiyle aynı dil */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              width: 13,
+              height: 13,
+              borderRadius: 999,
+              backgroundColor: wire,
+              display: "flex",
+              marginRight: 14,
+            }}
+          />
+          <div style={{ fontSize: 28, fontWeight: 500, color: fog }}>
+            Yeni projelere açığım
+          </div>
         </div>
 
         {/* Ana blok */}
@@ -77,8 +88,8 @@ export default async function Image() {
               lineHeight: 1.45,
             }}
           >
-            Gerçek kullanıcılara hizmet veren web uygulamaları — backend'den
-            deploy'a kadar.
+            Fikirden canlı yayına — gerçek kullanıcılara hizmet veren web
+            uygulamaları.
           </div>
         </div>
 
