@@ -16,7 +16,7 @@ const personJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   jobTitle: "Full-Stack Web Geliştirici",
-  email: "mailto:yasarcankoc61@gmail.com",
+  email: "mailto:ycksoftware@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "İstanbul",
