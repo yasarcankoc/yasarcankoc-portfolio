@@ -11,9 +11,9 @@ const inputClass =
 
 const socials = [
   {
-    href: "mailto:ycksoftware@gmail.com",
+    href: "mailto:merhaba@yasarcankoc.com",
     icon: Mail,
-    label: "ycksoftware@gmail.com",
+    label: "merhaba@yasarcankoc.com",
     external: false,
   },
   {
@@ -45,7 +45,7 @@ export default function Contact() {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolyo mesajı — ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:ycksoftware@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:merhaba@yasarcankoc.com?subject=${subject}&body=${body}`;
   }
 
   return (

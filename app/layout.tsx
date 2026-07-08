@@ -78,12 +78,9 @@ export default function RootLayout({
             __html: `
               (function () {
                 try {
-                  var theme = localStorage.getItem('theme');
-                  if (
-                    theme === 'dark' ||
-                    (!theme &&
-                      window.matchMedia('(prefers-color-scheme: dark)').matches)
-                  ) {
+                  // Varsayılan tema: açık (light). Sistem tercihine BAKILMAZ;
+                  // sadece ziyaretçi toggle ile koyu seçtiyse dark açılır.
+                  if (localStorage.getItem('theme') === 'dark') {
                     document.documentElement.classList.add('dark');
                   }
                 } catch (e) {}
